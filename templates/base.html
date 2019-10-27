@@ -1,17 +1,26 @@
 <!DOCTYPE html>
 <html>
 
-	{% include "head.html" %}
-	<body>
+{% include "parts/head.html" %}
 
-		{% include "header.html" %}
+<body>
 
-		{% block content %}
-	    
-		{% endblock content %}
+    {% include 'parts/header.html' %}
 
-		{% include "footer.html" %}
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
 
-		{% include "scripts.html" %}
-	</body>
+    {% block content %}
+    {% endblock content %}
+
+    {% include 'parts/footer.html' %}
+    {% include 'parts/scripts.html' %}
+
+</body>
+
 </html>
