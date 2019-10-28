@@ -101,7 +101,7 @@ class PostListView(ListView):
     model = Post
     template_name = 'blog.html'
     context_object_name = 'queryset'
-    paginate_by = 1
+    paginate_by = 6
 
     def get_context_data(self, **kwargs):
         category_count = get_category_count()
@@ -118,7 +118,7 @@ def post_list(request):
     category_count = get_category_count()
     most_recent = Post.objects.order_by('-timestamp')[:3]
     post_list = Post.objects.all()
-    paginator = Paginator(post_list, 4)
+    paginator = Paginator(post_list, 2)
     page_request_var = 'page'
     page = request.GET.get(page_request_var)
     try:
@@ -135,6 +135,7 @@ def post_list(request):
         'category_count': category_count,
         'form': form
     }
+    print(context)
     return render(request, 'blog.html', context)
 
 

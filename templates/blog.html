@@ -39,7 +39,13 @@
                 {% if page_obj.has_previous %}                
                 <li class="page-item"><a href="?{{ page_request_var }}={{ page_obj.previous_page_number }}" class="page-link"> <i class="fa fa-angle-left"></i></a></li>
                 {% endif %}
-                <li class="page-item"><a href="?{{ page_request_var }}={{ page_obj.number }}" class="page-link active">{{ page_obj.number }}</a></li>
+                {% for num in page_obj.paginator.page_range %}
+                  {% if page_obj.number == num %}
+                    <li class="page-item"><a href="?{{ page_request_var }}={{ num }}" class="page-link active">{{ num }}</a></li>
+                  {% else %}
+                    <li class="page-item"><a href="?{{ page_request_var }}={{ num }}" class="page-link">{{ num }}</a></li>
+                  {% endif %}
+                {% endfor %}
                 {% if page_obj.has_next %}
                 <li class="page-item"><a href="?{{ page_request_var }}={{ page_obj.next_page_number }}" class="page-link"> <i class="fa fa-angle-right"></i></a></li>
                 {% endif %}
