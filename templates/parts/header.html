@@ -38,7 +38,7 @@
                   <a class="dropdown-item" href="#"><i class="fa fa-train" aria-hidden="true"></i>&nbsp&nbsp&nbsp在日生活</a>
                 </div>
               </li>
-              <li class="nav-item"><a href="#" class="nav-link "><i class="fa fa-user-circle-o" aria-hidden="true"></i>&nbsp关于我</a>
+              <li class="nav-item"><a href="/me/" class="nav-link "><i class="fa fa-user-circle-o" aria-hidden="true"></i>&nbsp关于我</a>
               </li>
               {% if request.user.is_staff %}
               <li class="nav-item"><a href="{% url 'post-create' %}" class="nav-link ">Create</a>
